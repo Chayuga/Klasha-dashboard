@@ -7,8 +7,9 @@ import {
   MenuItem,
   Select,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AreaChart,
   Area,
@@ -45,6 +46,31 @@ const SalesGraph = () => {
   const handleChangeCurrency = (event) => {
     setCurrency(event.target.value);
   };
+
+  // w:768 h:284
+  const [graphWith, setGraphWidth] = useState(768);
+  const [graphHeight, setGraphHeight] = useState(284);
+
+  const mobile = useMediaQuery('(max-width:560px)');
+  const tablet = useMediaQuery('(max-width:1024px)');
+  const laptop = useMediaQuery('(min-width:1024px)');
+
+  useEffect(() => {
+    if (mobile === true) {
+      setGraphWidth(230);
+      setGraphHeight(100);
+    }
+
+    if (tablet === true) {
+      setGraphWidth(650);
+      setGraphHeight(230);
+    }
+
+    if (laptop === true) {
+      setGraphWidth(768);
+      setGraphHeight(284);
+    }
+  }, [mobile, tablet, laptop]);
 
   return (
     <Box
@@ -127,8 +153,8 @@ const SalesGraph = () => {
           }}
         >
           <AreaChart
-            width={768}
-            height={284}
+            width={graphWith}
+            height={graphHeight}
             data={chartData}
             margin={{ top: 10, right: 30, left: 5, bottom: 0 }}
           >

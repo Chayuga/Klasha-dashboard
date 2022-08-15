@@ -21,7 +21,7 @@ const Sidebar = () => {
   const normalLink =
     'flex items-center  pl-4 pt-3 pb-2.5 text-md text-black hover:text-gray-500';
 
-  const mobile = useMediaQuery('(max-width:640px)');
+  const mobile = useMediaQuery('(max-width:770px)');
   const tablet = useMediaQuery('(max-width:1024px)');
   const laptop = useMediaQuery('(min-width:1024px)');
 

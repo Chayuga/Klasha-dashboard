@@ -12,8 +12,8 @@ import UserDropDown from './UserDropDown';
 import { Box, Link } from '@mui/material';
 
 const Navbar = () => {
-  const mobile = useMediaQuery('(max-width:640px)');
-  const tablet = useMediaQuery('(max-width:720px)');
+  const mobile = useMediaQuery('(max-width:700px)');
+  const tablet = useMediaQuery('(max-width:1024px)');
 
   const { setMobileMenu } = useStateContext();
 
