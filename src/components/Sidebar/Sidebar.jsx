@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { MdOutlineCancel } from 'react-icons/md';
@@ -25,13 +25,15 @@ const Sidebar = () => {
   const tablet = useMediaQuery('(max-width:1024px)');
   const laptop = useMediaQuery('(min-width:1024px)');
 
-  if (tablet === true) {
-    setFullMenu(false);
-  }
+  useEffect(() => {
+    if (tablet === true) {
+      setFullMenu(false);
+    }
 
-  if (laptop === true) {
-    setFullMenu(true);
-  }
+    if (laptop === true) {
+      setFullMenu(true);
+    }
+  }, [mobile, tablet, laptop]);
 
   return (
     <>

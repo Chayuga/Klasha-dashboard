@@ -46,9 +46,6 @@ const SalesGraph = () => {
     setCurrency(event.target.value);
   };
 
-  const ChartHeight = '100%';
-  const ChartWidth = '100%';
-
   return (
     <Box
       sx={{
