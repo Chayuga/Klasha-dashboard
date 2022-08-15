@@ -6,7 +6,6 @@ export const ContextProvider = ({ children }) => {
   const [showMenu, setShowMenu] = useState(true);
   const [fullMenu, setFullMenu] = useState(true);
   const [toggleOn, setToggleOn] = useState(true);
-  const [screenSize, setScreenSize] = useState(undefined);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [onMobile, setOnMobile] = useState(true);
 
@@ -23,8 +22,6 @@ export const ContextProvider = ({ children }) => {
         setFullMenu,
         toggleOn,
         setToggleOn,
-        screenSize,
-        setScreenSize,
         onMobile,
         setOnMobile,
         handleMobileMenu,

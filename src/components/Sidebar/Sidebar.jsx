@@ -8,13 +8,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { links } from '../Sidebar/links';
 import klashaFullLogo from '../../assets/logo/klasha__logo.svg';
 import klashaKLogo from '../../assets/logo/klasha-k.svg';
+import { useStateContext } from '../../contexts/ContextProvider';
 
 const SidebarMenu = () => {
-  // const tablet = useMediaQuery('(min-width:640px)');
-  // const laptop = useMediaQuery('(min-width:1024px)');
-  // const desktop = useMediaQuery('(min-width:1200px)');
+  const { fullMenu, setFullMenu } = useStateContext();
 
-  const [fullMenu, setFullMenu] = useState(true);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const activeLink =

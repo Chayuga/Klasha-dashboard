@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useStateContext } from './contexts/ContextProvider';
 
 import { Navbar, Sidebar } from './components';
@@ -15,7 +15,7 @@ function App() {
           fullMenu ? 'w-52' : 'w-24'
         } fixed sidebar justify-center bg-white`}
       >
-        {fullMenu && <Sidebar />}
+        <Sidebar />
       </div>
       <div
         className={`divide-y bg-main-bg overflow-none flex-grow md:mx-6 p-4   divide-solid ${
