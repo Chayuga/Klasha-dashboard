@@ -21,7 +21,11 @@ const MobileSideBar = () => {
 
   useEffect(() => {
     setFullMenu(true);
+<<<<<<< HEAD
   }, [setFullMenu]);
+=======
+  }, []);
+>>>>>>> dbfdc9464341338456c48b76acdf7b7c67b1b2c1
 
   return (
     <>
