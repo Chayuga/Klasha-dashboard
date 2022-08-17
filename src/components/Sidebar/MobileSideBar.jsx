@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -19,6 +19,10 @@ const MobileSideBar = () => {
   const normalLink =
     'flex items-center  pl-4 pt-3 pb-2.5 text-md text-black hover:text-gray-500';
 
+  useEffect(() => {
+    setFullMenu(true);
+  }, []);
+
   return (
     <>
       {mobile && (
@@ -29,10 +33,9 @@ const MobileSideBar = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginTop: '2rem',
-                margin: '0.25rem',
+                margin: '4rem 1rem 0 1rem',
+                flexWrap: 'wrap',
               }}
-              className={`!fullMenu && 'flexDirection: 'column'`}
             >
               <Button
                 type='button'
@@ -43,10 +46,7 @@ const MobileSideBar = () => {
                 <ArrowBackIcon />
               </Button>
 
-              <Link
-                to='/'
-                className='flex justify-center item-center gap-3 mt-4 '
-              >
+              <Link to='/' className=' gap-3 '>
                 {fullMenu ? (
                   <img src={klashaFullLogo} alt='klasha logo' />
                 ) : (

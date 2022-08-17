@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -9,7 +9,7 @@ import DateToday from './date';
 import Languge from './Languge';
 import ToggleSwitch from './ToggleSwitch';
 import UserDropDown from './UserDropDown';
-import { Box, Button, Link, Typography } from '@mui/material';
+import { Box, Button, Link } from '@mui/material';
 
 const Navbar = () => {
   const mobile = useMediaQuery('(max-width:700px)');

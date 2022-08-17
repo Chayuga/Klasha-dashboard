@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Tooltip from '@mui/material/Tooltip';
 
 import { links } from '../Sidebar/links';
 import klashaFullLogo from '../../assets/logo/klasha__logo.svg';
 import klashaKLogo from '../../assets/logo/klasha-k.svg';
 import { useStateContext } from '../../contexts/ContextProvider';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 
 const Sidebar = () => {
-  const {
-    fullMenu,
-    setFullMenu,
-    mobile,
-    tablet,
-    laptop,
-    mobileMenu,
-    setMobileMenu,
-  } = useStateContext();
+  const { fullMenu, setFullMenu, mobile, tablet, laptop, setMobileMenu } =
+    useStateContext();
 
   const activeLink =
     'flex items-center  pl-4 pt-3 pb-2.5 text-[#EF2C5A] text-md';
