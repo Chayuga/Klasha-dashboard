@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useStateContext } from './contexts/ContextProvider';
 
 import { Navbar, Sidebar } from './components';
