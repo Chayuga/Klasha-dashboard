@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { MdOutlineCancel } from 'react-icons/md';
+import Tooltip from '@mui/material/Tooltip';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -88,7 +89,9 @@ const Sidebar = () => {
                             isActive ? activeLink : normalLink,
                           ]}`}
                           >
-                            <p className='mr-2'>{link.iconActive}</p>
+                            <Tooltip title={link.name} placement='right'>
+                              <p className='mr-2'>{link.iconActive}</p>
+                            </Tooltip>
                           </div>
                         )}
                       </NavLink>
