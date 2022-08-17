@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -9,7 +9,7 @@ import DateToday from './date';
 import Languge from './Languge';
 import ToggleSwitch from './ToggleSwitch';
 import UserDropDown from './UserDropDown';
-import { Box, Link } from '@mui/material';
+import { Box, Button, Link, Typography } from '@mui/material';
 
 const Navbar = () => {
   const mobile = useMediaQuery('(max-width:700px)');
@@ -21,13 +21,13 @@ const Navbar = () => {
     <div className='flex justify-between py-4 relative'>
       {mobile && (
         <Box sx={{ display: 'flex' }}>
-          <button
+          <Button
             type='button'
-            onClick={() => setMobileMenu(true)}
+            onClick={() => setMobileMenu((prevMobileMenu) => !prevMobileMenu)}
             className='mx-3 mr-4'
           >
             <AiOutlineMenu />
-          </button>
+          </Button>
 
           <Link to='/' className='flex justify-center item-center mt-4 '>
             <img src={klashaFullLogo} alt='klasha logo' />
