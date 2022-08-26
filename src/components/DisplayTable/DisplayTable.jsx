@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useDownloadExcel } from 'react-export-table-to-excel';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -29,6 +31,14 @@ const DisplayTable = () => {
     'request_date',
     'status',
   ];
+
+  const tableRef = useRef(null);
+
+  const { onDownload } = useDownloadExcel({
+    currentTableRef: tableRef.current,
+    filename: 'Transaction Record',
+    sheet: 'Transactions',
+  });
 
   const search = (TRANSACTIONS) => {
     return TRANSACTIONS.filter((transaction) =>
@@ -107,6 +117,7 @@ const DisplayTable = () => {
                   Filter <FilterList sx={{ height: '1rem' }} />
                 </Button>
                 <Button
+                  onClick={onDownload}
                   sx={{
                     margin: '5px',
                     color: 'black',
@@ -121,6 +132,7 @@ const DisplayTable = () => {
           </Box>
         </Box>
         <Table
+          ref={tableRef}
           stickyHeader
           aria-label='sticky table'
           sx={{ borderTop: '1px solid rgba(0,0,0,0.2)' }}
