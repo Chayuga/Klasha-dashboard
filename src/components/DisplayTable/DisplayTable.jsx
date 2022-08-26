@@ -9,12 +9,34 @@ import TableRow from '@mui/material/TableRow';
 
 import { COLUMNS } from './Columns';
 import { TRANSACTIONS } from './data';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Input, Typography } from '@mui/material';
 import { FilterList, Search } from '@mui/icons-material';
+
+import { useStateContext } from '../../contexts/SearchProvider';
 
 const DisplayTable = () => {
   const [page, setPage] = useState(1);
   const rowsPerPage = 8;
+
+  const { query, setQuery } = useStateContext();
+
+  const keys = [
+    'transaction_id',
+    'source',
+    'customer_name',
+    'customer_email',
+    'amount',
+    'request_date',
+    'status',
+  ];
+
+  const search = (TRANSACTIONS) => {
+    return TRANSACTIONS.filter((transaction) =>
+      keys.some((key) =>
+        transaction[key].toString().toLowerCase().includes(query)
+      )
+    );
+  };
 
   const handleChange = (event, newPage) => {
     setPage(newPage);
@@ -62,7 +84,13 @@ const DisplayTable = () => {
               }}
             >
               <Typography sx={{ display: 'flex', alignItems: 'center' }}>
-                Search <Search sx={{ marginLeft: '30px' }} />
+                <Input
+                  disableUnderline
+                  placeholder='Search…'
+                  inputProps={{ 'aria-label': 'search' }}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                <Search sx={{ marginLeft: '30px' }} />
               </Typography>
             </Box>
 
@@ -111,25 +139,24 @@ const DisplayTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {TRANSACTIONS.slice(
-              page * rowsPerPage,
-              page * rowsPerPage + rowsPerPage
-            ).map((row) => {
-              return (
-                <TableRow hover role='checkbox' tabIndex={-1} key={row.code}>
-                  {COLUMNS.map((column) => {
-                    const value = row[column.id];
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number'
-                          ? column.format(value)
-                          : value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
+            {search(TRANSACTIONS)
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => {
+                return (
+                  <TableRow hover role='checkbox' tabIndex={-1} key={row.code}>
+                    {COLUMNS.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === 'number'
+                            ? column.format(value)
+                            : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>
