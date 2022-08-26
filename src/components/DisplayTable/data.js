@@ -7,8 +7,25 @@ export const createData = (
   request_date,
   status
 ) => {
-  return { transaction_id, source, customer_name, customer_email, amount, request_date, status };
+  return {
+    transaction_id,
+    source,
+    customer_name,
+    customer_email,
+    amount,
+    request_date,
+    status,
+  };
 };
+
+export const searchKeys = [
+  'source',
+  'customer_name',
+  'customer_email',
+  'amount',
+  'request_date',
+  'status',
+];
 
 export const TRANSACTIONS = [
   createData(
@@ -1810,5 +1827,5 @@ export const TRANSACTIONS = [
     93737,
     '11/14/2021',
     'Successful'
-  )
+  ),
 ];

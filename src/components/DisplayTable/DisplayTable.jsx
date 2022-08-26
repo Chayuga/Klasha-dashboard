@@ -10,7 +10,7 @@ import Pagination from '@mui/material/Pagination';
 import TableRow from '@mui/material/TableRow';
 
 import { COLUMNS } from './Columns';
-import { TRANSACTIONS } from './data';
+import { TRANSACTIONS, searchKeys } from './data';
 import { Box, Button, Input, Typography } from '@mui/material';
 import { FilterList, Search } from '@mui/icons-material';
 
@@ -22,16 +22,6 @@ const DisplayTable = () => {
 
   const { query, setQuery } = useStateContext();
 
-  const keys = [
-    'transaction_id',
-    'source',
-    'customer_name',
-    'customer_email',
-    'amount',
-    'request_date',
-    'status',
-  ];
-
   const tableRef = useRef(null);
 
   const { onDownload } = useDownloadExcel({
@@ -42,7 +32,7 @@ const DisplayTable = () => {
 
   const search = (TRANSACTIONS) => {
     return TRANSACTIONS.filter((transaction) =>
-      keys.some((key) =>
+      searchKeys.some((key) =>
         transaction[key].toString().toLowerCase().includes(query)
       )
     );
